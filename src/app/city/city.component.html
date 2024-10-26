@@ -1,1 +1,23 @@
-<p>city works!</p>
+<h1 style="text-align: center;">Countries</h1>
+<table class="table table-striped" aria-labelledby="tableLabel">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>ISO2</th>
+            <th>ISO3</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (city of cities; track city.country_id) {
+            <tr>
+              <td><a>{{ city.name }}</a></td>
+              <td><a>{{ city.ascii }}</a></td>
+              <td><a>{{ city.lat }}</a></td>
+              <td><a>{{ city.lng }}</a></td>
+              <td><a>{{ city.population }}</a></td>
+              <td><a>{{ city.country_id }}</a></td>
+            </tr>  
+          }
+    </tbody>
+</table>

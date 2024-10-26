@@ -1,5 +1,5 @@
-<h1>Countries</h1>
- <table class="table table-striped" aria-labelledby="tableLabel">
+<h1 style="text-align: center;">Countries</h1>
+<table class="table table-striped" aria-labelledby="tableLabel">
     <thead>
         <tr>
             <th>ID</th>
@@ -11,7 +11,7 @@
     <tbody>
         @for (country of countries; track country.id) {
             <tr>
-              <td> <a [routerLink]="['/country_population', country.id]">{{ country.id }}</a></td>
+              <td> <a [routerLink]="['/countrypopulation', country.id]">{{ country.id }}</a></td>
               <!-- URL + Parameter -->
               <td><a>{{ country.name }}</a></td>
               <td>{{ country.iso2 }}</td>

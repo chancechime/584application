@@ -10,7 +10,7 @@ import { Country } from './country';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './country.component.html',
-  styleUrl: './country.component.scss'
+  styleUrls: ['./country.component.scss']
 })
 export class CountryComponent implements OnInit {
   public countries: Country[] = [];
@@ -18,14 +18,17 @@ export class CountryComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.getCountries();
   }
 
   getCountries() {
-    this.http.get<Country[]>('${environment.baseUrl}api/Countries').subscribe(
+    this.http.get<Country[]>(`${environment.baseUrl}/api/Countries`).subscribe(
       {
         next: result => this.countries = result,
         error: e => console.error(e)
       }
     );
   }
+
+  title = 'angularapp1.client';
 }
