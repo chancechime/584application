@@ -21,6 +21,7 @@ export class CountryPopulationComponent implements OnInit {
     let idParam = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.id = idParam ? +idParam : -1; // + converts string to number else -1
+
     
     this.http.get<CountryPopulation[]>(`${environment.baseUrl}api/Countries/countryPopulation/${this.id}`).subscribe(
       {
