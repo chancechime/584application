@@ -23,3 +23,20 @@
     .separator {
       flex: 1 1 auto;
   }
+
+  .spin {
+    animation: spin-pause 4.85s cubic-bezier(.62,0,.58,1) infinite;
+    animation-delay: 0.95s;
+  }
+
+  @keyframes spin-pause {
+    0%, 35%, 55% { transform: rotate(0deg); }
+    45% { transform: rotate(170deg); }
+    25%, 68%, 100% { transform: rotate(360deg); }
+    10%, 50% { transform: rotate(220); }
+  }
+
+  .spin:hover {
+    animation-play-state: paused;
+    filter: grayscale(100%);
+}
