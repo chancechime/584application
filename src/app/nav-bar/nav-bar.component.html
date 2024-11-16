@@ -1,10 +1,16 @@
 <header>
     <mat-toolbar color="primary">
+      
         <button mat-icon-button [routerLink]="['/']">
           <mat-icon class="spin">home</mat-icon>
         </button>
   
         <a mat-flat-button color="primary" [routerLink]="['/countries']">Countries</a>
         <a mat-flat-button color="primary" [routerLink]="['/cities']">Cities</a>
+        <div class="flex-spacer"></div>
+        <button mat-icon-button [routerLink] = "['/login']">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+
     </mat-toolbar>
 </header>
