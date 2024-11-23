@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from './auth.service';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -42,7 +43,10 @@ export class LoginComponent implements OnInit {
       next: result => {
         loginResponse = result;
         console.log(loginResponse);
-        },
+        if (result.success) { // We had done this after we authorized the API to return a token (ex: we had done it on the api/countries)
+          localStorage.setItem('LoginToken', result.token);
+        }
+      },
       error: e => console.error(e)
     });
 

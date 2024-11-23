@@ -25,7 +25,11 @@ export class CountryPopulationComponent implements OnInit {
     
     this.http.get<CountryPopulation[]>(`${environment.baseUrl}api/Countries/countryPopulation/${this.id}`).subscribe(
       {
-        next: result => this.CountryPopulation = result,
+        next: result => 
+          {
+            this.CountryPopulation = result
+            
+          },
         error: e => console.error(e)
       }
     );

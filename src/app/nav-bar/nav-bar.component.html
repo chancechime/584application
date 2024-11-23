@@ -8,9 +8,18 @@
         <a mat-flat-button color="primary" [routerLink]="['/countries']">Countries</a>
         <a mat-flat-button color="primary" [routerLink]="['/cities']">Cities</a>
         <div class="flex-spacer"></div>
-        <button mat-icon-button [routerLink] = "['/login']">
-          <mat-icon>account_circle</mat-icon>
-        </button>
-
+        @if (isloggedIn) {
+          <a>Howdy Bob</a>
+          <button (click)="onLogOut()">
+            <mat-icon>account_circle</mat-icon>
+          </button>
+        }
+        @else 
+        {
+          <a>User not logged in </a>
+          <button mat-icon-button [routerLink] = "['/login']">
+            <mat-icon>no_accounts</mat-icon>
+          </button>
+      }
     </mat-toolbar>
 </header>
