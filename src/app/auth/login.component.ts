@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from './auth.service';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 
 @Component({
@@ -39,12 +40,15 @@ export class LoginComponent implements OnInit {
     
     var loginResponse: LoginResponse;
 
+    var NavBarComponent: NavBarComponent;
+
     this.authService.login(loginRequest).subscribe({
       next: result => {
         loginResponse = result;
         console.log(loginResponse);
         if (result.success) { // We had done this after we authorized the API to return a token (ex: we had done it on the api/countries)
           localStorage.setItem('LoginToken', result.token);
+          this.router.navigate(['/']);
         }
       },
       error: e => console.error(e)
@@ -61,5 +65,5 @@ export class LoginComponent implements OnInit {
   
   form!: UntypedFormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 }
