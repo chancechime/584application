@@ -22,13 +22,10 @@ export class CountryComponent implements OnInit {
   }
 
   getCountries() {
-    this.http.get<Country[]>(`${environment.baseUrl}/api/Countries`).subscribe(
-      {
+    this.http.get<Country[]>(`${environment.baseUrl}/api/Countries`).subscribe({
         next: result => this.countries = result,
         error: e => console.error(e)
-      }
-    );
+      });
   }
-
   title = 'angularapp1.client';
 }

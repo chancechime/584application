@@ -12,26 +12,19 @@ import { environment } from '../../environments/environment.development'; // Adj
   templateUrl: './country-population.component.html',
   styleUrls: ['./country-population.component.scss'] // Corrected to styleUrls
 })
+
 export class CountryPopulationComponent implements OnInit {
   id: number = -1;
-  public CountryPopulation!: CountryPopulation[];
+  public countryPopulation!: CountryPopulation;
+
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {}
   
   ngOnInit(): void {
-    let idParam = this.activatedRoute.snapshot.paramMap.get('id');
-
-    this.id = idParam ? +idParam : -1; // + converts string to number else -1
-
-    
-    this.http.get<CountryPopulation[]>(`${environment.baseUrl}api/Countries/countryPopulation/${this.id}`).subscribe(
-      {
-        next: result => 
-          {
-            this.CountryPopulation = result
-            
-          },
+    let id_Param = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id = id_Param ? + id_Param : -1; // + converts string to number else -1
+    this.http.get<CountryPopulation>(`${environment.baseUrl}api/Countries/countryPopulation/${this.id}`).subscribe({
+        next: result => this.countryPopulation = result,
         error: e => console.error(e)
-      }
-    );
+      });
   }
 }
